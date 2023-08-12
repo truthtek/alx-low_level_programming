@@ -1,30 +1,29 @@
-#include <stdio.h>
-
+/**
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
+ */
 int main(void)
 {
-    int i, j; /* i and j are the numbers from 0 to 99 */
+    int tens_digit;
+    int ones_digit;
 
-    for (i = 0; i <= 99; i++)
+    for (tens_digit = 0; tens_digit < 9; tens_digit++)
     {
-        for (j = i; j <= 99; j++)
+        for (ones_digit = tens_digit + 1; ones_digit <= 9; ones_digit++)
         {
-            if (i != j && i % 10 != j % 10 && i / 10 != j / 10) /* check if the two digits are different */
+            putchar(tens_digit + '0');
+            putchar(ones_digit + '0');
+
+            if (tens_digit != 8 || ones_digit != 9)
             {
-                /* print the first number */
-                putchar(i / 10 + 48);
-                putchar(i % 10 + 48);
-
-                /* print the comma and space if needed */
-                i == 98 ? putchar('\n') : (putchar(','), putchar(' '));
-
-                /* print the second number */
-                putchar(j / 10 + 48);
-                putchar(j % 10 + 48);
-
-                /* print the comma and space if needed */
-                j == 99 ? putchar('\n') : (putchar(','), putchar(' '));
+                putchar(',');
+                putchar(' ');
             }
         }
     }
+
+    putchar('\n');
+
     return (0);
 }
