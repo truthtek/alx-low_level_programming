@@ -1,5 +1,2 @@
 #!/bin/bash
-CFILE="$1"
-FILENAME=$(basename -- "$CFILE")
-FILENAME_WITHOUT_EXT="${FILENAME%.*}"
-gcc -S -masm=intel "$CFILE" -o "$FILENAME_WITHOUT_EXT.s"
+gcc -S -masm=intel "$CFILE" -o "${CFILE%.c}.s"
