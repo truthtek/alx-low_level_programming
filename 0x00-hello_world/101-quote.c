@@ -1,10 +1,7 @@
+#include <stdio.h>
 #include <unistd.h>
-
 int main(void)
 {
-    char *message = "and that piece of art is useful\\x22 - Dora Korpar, 2015-10-19\\x0a";
-    ssize_t len = sizeof(message) - 1;
-
-    write(STDERR_FILENO, message, len);
+    write(2, "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n", 59);
     return (1);
 }
