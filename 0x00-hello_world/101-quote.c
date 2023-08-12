@@ -3,8 +3,8 @@
 /**
  * main - Entry point
  *
- * Prints a specific message to the standard error.
- * RAlways 1 (error code)
+ *  Prints a specific message to the standard error.
+ * Return: Always 1 (error code)
  */
 int main(void)
 {
