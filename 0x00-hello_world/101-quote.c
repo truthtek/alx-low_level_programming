@@ -6,5 +6,5 @@ int main(void)
     ssize_t len = sizeof(message) - 1;
 
     write(STDERR_FILENO, message, len);
-    return 1;
+    return (1);
 }
