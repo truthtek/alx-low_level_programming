@@ -11,13 +11,14 @@ int main(void)
 
     for (i = 0; i <= 9; i++)
     {
-        putchar(i + 48); /* print the first number */
+        putchar(i + '0'); /* Print the first number */
         for (j = i; j <= 9; j++)
         {
             if (i != j)
             {
-                putchar((i << 8) | ',');
-                putchar((j << 8) | ' ');
+                putchar(',');
+                putchar(' ');
+                putchar(j + '0');
             }
         }
     }
