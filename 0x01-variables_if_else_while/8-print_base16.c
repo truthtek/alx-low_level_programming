@@ -7,13 +7,13 @@
  */
 int main(void)
 {
-    int n;
-    char c;
+int n;
+char c;
 
-    for (n = 48; n < 58; n++) /* 48 is the ASCII value of '0' */
-        putchar(n);
-    for (c = 'a'; c <= 'f'; c++)
-        putchar(c);
-    putchar('\n');
-    return (0);
+for (n = 48; n < 58; n++) /* 48 is the ASCII value of '0' */
+putchar(n);
+for (c = 'a'; c <= 'f'; c++)
+putchar(c);
+putchar('\n');
+return (0);
 }
