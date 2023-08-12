@@ -1,19 +1,16 @@
 #include <stdio.h>
 
 /**
- * main - prints the alphabet in lowercase, and then in uppercase,
- * followed by a new line
+ * main - prints the alphabet in lowercase, and then in uppercase
  * Return: Always 0 (Success)
  */
 int main(void)
 {
     int c;
 
-    for (c = 65; c <= 90; c++)
-    {
+    for (c = 97; c <= 122; c++)
         putchar(c);
-        putchar(c | ' ');
-        putchar('\n');
-    }
+    for (c = 65; c <= 90; c++)
+        putchar(c);
     return (0);
 }
