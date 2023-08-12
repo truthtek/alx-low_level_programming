@@ -8,6 +8,7 @@
 int main(void)
 {
     int i, j;
+    int putchar(int c);
 
     for (i = 0; i <= 9; i++)
     {
