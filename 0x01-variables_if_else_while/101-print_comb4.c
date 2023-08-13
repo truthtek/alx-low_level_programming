@@ -1,25 +1,29 @@
+#include <stdio.h>
+
 /**
  * main - Entry point
  *
  * Return: Always 0 (Success)
  */
+
 int main(void)
 {
-    int hundreds_digit;
-    int tens_digit;
-    int ones_digit;
+    int i, j, k;
 
-    for (hundreds_digit = 0; hundreds_digit < 8; hundreds_digit++)
+    for (i = 0; i < 10; i++)
     {
-        for (tens_digit = hundreds_digit + 1; tens_digit < 9; tens_digit++)
+        for (j = 0; j < 10; j++)
         {
-            for (ones_digit = tens_digit + 1; ones_digit <= 9; ones_digit++)
+            if (i == j)
+                continue;
+            for (k = 0; k < 10; k++)
             {
-                putchar(hundreds_digit + '0');
-                putchar(tens_digit + '0');
-                putchar(ones_digit + '0');
-
-                if (hundreds_digit != 7 || tens_digit != 8 || ones_digit != 9)
+                if (k == i || k == j)
+                    continue;
+                putchar(i + '0');
+                putchar(j + '0');
+                putchar(k + '0');
+                if (i != 7 || j != 8 || k != 9)
                 {
                     putchar(',');
                     putchar(' ');
@@ -27,8 +31,6 @@ int main(void)
             }
         }
     }
-
-    putchar('\n');
-
+    putchar('\\n');
     return (0);
 }
