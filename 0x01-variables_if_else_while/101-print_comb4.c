@@ -1,11 +1,5 @@
 #include <stdio.h>
 
-/**
- * main - Entry point
- *
- * Return: Always 0 (Success)
- */
-
 int main(void)
 {
     int i, j, k;
@@ -14,23 +8,25 @@ int main(void)
     {
         for (j = 0; j < 10; j++)
         {
-            if (i == j)
-                continue;
-            for (k = 0; k < 10; k++)
+            if (i != j)
             {
-                if (k == i || k == j)
-                    continue;
-                putchar(i + '0');
-                putchar(j + '0');
-                putchar(k + '0');
-                if (i != 7 || j != 8 || k != 9)
+                for (k = 0; k < 10; k++)
                 {
-                    putchar(',');
-                    putchar(' ');
+                    if (k != i && k != j)
+                    {
+                        putchar(i + '0');
+                        putchar(j + '0');
+                        putchar(k + '0');
+                        if (i < 7)
+                        {
+                            putchar(',');
+                            putchar(' ');
+                        }
+                    }
                 }
             }
         }
     }
-    putchar('\\n');
+    putchar('\n');
     return (0);
 }
