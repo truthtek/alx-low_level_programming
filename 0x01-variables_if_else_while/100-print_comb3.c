@@ -1,29 +1,22 @@
-/**
- * main - Entry point
- *
- * Return: Always 0 (Success)
- */
+#include <stdio.h>
+
 int main(void)
 {
-    int tens_digit;
-    int ones_digit;
+    int i, j;
 
-    for (tens_digit = 0; tens_digit < 9; tens_digit++)
+    for (i = 0; i <= 9; i++)
     {
-        for (ones_digit = tens_digit + 1; ones_digit <= 9; ones_digit++)
+        for (j = i + 1; j <= 9; j++)
         {
-            putchar(tens_digit + '0');
-            putchar(ones_digit + '0');
-
-            if (tens_digit != 8 || ones_digit != 9)
+            putchar(i + '0');
+            putchar(j + '0');
+            if (i != 8 || j != 9)
             {
                 putchar(',');
                 putchar(' ');
             }
         }
     }
-
     putchar('\n');
-
     return (0);
 }
