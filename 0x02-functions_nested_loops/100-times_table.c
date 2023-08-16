@@ -1,13 +1,8 @@
 #include "main.h"
-
 /**
- * add - Adds two integers
- * @a: The first integer
- * @b: The second integer
- *
- * Return: The sum of a and b
+ * print_times_table - Prints the n times table
+ * @n: The number for which the times table is printed
  */
-
 void print_times_table(int n)
 {
 int i, j, product;
