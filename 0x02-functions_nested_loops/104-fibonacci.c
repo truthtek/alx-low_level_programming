@@ -5,21 +5,24 @@
  *
  * Return: Always 0 (Success)
  */
+
+void print_fibonacci(int n)
+{
+    int i, t1 = 0, t2 = 1, nextTerm;
+
+    for (i = 1; i <= n; ++i)
+    {
+        printf("%d, ", t2);
+        nextTerm = t1 + t2;
+        t1 = t2;
+        t2 = nextTerm;
+    }
+    printf("\n");
+}
+
 int main(void)
 {
-    int count, term1 = 1, term2 = 2, nextTerm;
-
-    printf("%d, %d", term1, term2);
-
-    for (count = 3; count <= 98; ++count)
-    {
-        nextTerm = term1 + term2;
-        printf(", %d", nextTerm);
-        term1 = term2;
-        term2 = nextTerm;
-    }
-
-    printf("\n");
-
-    return 0;
+    print_fibonacci(98);
+    return (0);
 }
+
