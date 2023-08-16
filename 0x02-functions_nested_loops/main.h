@@ -34,6 +34,8 @@ void print_alphabet(void);
 int _putchar(char c);
 int _islower(int c);
 
+int main(void);
+
 #endif /* MAIN_H */
 
 
