@@ -38,7 +38,7 @@ _putchar(product / 10 + '0');
 _putchar(product % 10 + '0');
 }
 else
- _putchar(product + '0');
+_putchar(product + '0');
 }
 _putchar('\n');
 }
