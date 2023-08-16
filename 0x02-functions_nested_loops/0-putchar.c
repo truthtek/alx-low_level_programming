@@ -1,7 +1,14 @@
-#include <stdio.h>
+#include "main.h"
 
 int main(void)
 {
-    printf("_putchar\n");
-    return 0;
+    char *str = "_putchar\n";
+    int i = 0;
+
+    while (str[i])
+    {
+        _putchar(str[i]);
+        i++;
+    }
+    return (0);
 }
