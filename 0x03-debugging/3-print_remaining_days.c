@@ -1,10 +1,12 @@
 #include <stdio.h>
 /**
- * largest_number - Returns the largest of three integers.
- * @a: First integer.
- * @b: Second integer.
- * @c: Third integer.
- * Return: The largest of the three integers.
+ * print_remaining_days - Takes a date and prints how many days are
+ * left in the year, taking leap years into account.
+ * @month: The month in number format.
+ * @day: The day of the month.
+ * @year: The year.
+ *
+ * Return: void.
  */
 
 
