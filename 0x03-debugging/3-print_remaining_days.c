@@ -1,4 +1,11 @@
 #include <stdio.h>
+/**
+ * largest_number - Returns the largest of three integers.
+ * @a: First integer.
+ * @b: Second integer.
+ * @c: Third integer.
+ * Return: The largest of the three integers.
+ */
 
 
 void print_remaining_days(int month, int day, int year)
