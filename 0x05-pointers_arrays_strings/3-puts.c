@@ -1,4 +1,4 @@
-#include "main.h" 
+#include "main.h"
 
 /**
  * _puts - Prints a string followed by a new line.
@@ -10,6 +10,6 @@ while (*str != '\0')
 {
 _putchar(*str);
 str++;
-}  
+}
 _putchar('\n');
 }
