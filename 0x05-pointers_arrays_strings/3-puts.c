@@ -8,8 +8,8 @@ void _puts(char *str)
 {
 while (*str != '\0')
 {
-_putchar(*str); // Print the current character
+_putchar(*str);
 str++;
 }  
-_putchar('\n'); // Print a new line after the string
+_putchar('\n');
 }
