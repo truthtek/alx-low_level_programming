@@ -19,7 +19,7 @@ while (start < end)
 {
 temp = s[start];
 s[start] = s[end];
-s[end] = temp; 
+s[end] = temp;
 start++;
 end--;
 }
