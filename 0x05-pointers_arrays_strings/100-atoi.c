@@ -22,5 +22,5 @@ while (s[i] != '\0' && s[i] >= '0' && s[i] <= '9')
 result = result * 10 + sign * (s[i] - '0');
 i++;
 }
-return result;
+return (result);
 }
