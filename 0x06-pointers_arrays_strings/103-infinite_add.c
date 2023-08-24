@@ -1,14 +1,13 @@
-#include "main.h"
 #include <stdio.h>
+#include "main.h"
 
 /**
- * infinite_add - adds two numbers
- * @n1: the first number
- * @n2: the second number
- * @r: the buffer to store the result
- * @size_r: the size of the buffer
- *
- * Return: char pointer
+ * infinite_add - Adds two numbers.
+ * @n1: The first number as a string.
+ * @n2: The second number as a string.
+ * @r: The buffer to store the result.
+ * @size_r: The buffer size.
+ * Return: A pointer to the result, or 0 if the result can't fit in r.
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
