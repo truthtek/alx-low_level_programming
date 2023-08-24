@@ -8,15 +8,10 @@
  */
 char *_strcat(char *dest, char *src)
 {
-char *ptr = dest;
-while (*ptr != '\0')
-ptr++;
-while (*src != '\0')
-{
-*ptr = *src;
-ptr++;
-src++;
-}
-*ptr = '\0'; // Adding the terminating null byte
+int i, j;
+for (i = 0; dest[i] != '\0'; i++);
+for (j = 0; src[j] != '\0'; j++)
+dest[i + j] = src[j];
+dest[i + j] = '\0';
 return (dest);
 }
