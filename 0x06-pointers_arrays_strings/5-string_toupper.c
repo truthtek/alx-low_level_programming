@@ -5,13 +5,15 @@
  * @str: The input string.
  * Return: A pointer to the modified string.
  */
-char *string_toupper(char *s)
+char *string_toupper(char *str)
 {
 int i;
-for (i = 0; s[i] != '\0'; i++)
+for (i = 0; str[i] != '\0'; i++)
 {
-if (s[i] >= 'a' && s[i] <= 'z')
-s[i] = s[i] - 'a' + 'A';
+if (str[i] >= 'a' && str[i] <= 'z')
+{
+str[i] = str[i] - 'a' + 'A';
 }
-return (s);
+}
+return (str);
 }
