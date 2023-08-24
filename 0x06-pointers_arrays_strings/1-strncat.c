@@ -9,21 +9,11 @@
  */
 char *_strncat(char *dest, char *src, int n)
 {
-    char *ptr = dest;
-
-    // Find the end of dest
-    while (*ptr != '\0')
-        ptr++;
-
-    // Copy up to n bytes from src to dest
-    while (*src != '\0' && n > 0)
-    {
-        *ptr = *src;
-        ptr++;
-        src++;
-        n--;
-    }
-
-    *ptr = '\0'; // Adding the terminating null byte
-    return dest;
+    int i, j;
+    for (i = 0; dest[i] != '\0'; i++)
+        ;
+    for (j = 0; j < n && src[j] != '\0'; j++)
+        dest[i + j] = src[j];
+    dest[i + j] = '\0';
+    return (dest);
 }
