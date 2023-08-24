@@ -1,15 +1,7 @@
 #include "main.h"
 #include <stdio.h>
 
-/**
- * infinite_add - adds two numbers
- * @n1: the first number
- * @n2: the second number
- * @r: the buffer to store the result
- * @size_r: the size of the buffer
- *
- * Return: char pointer
- */
+
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
 int i, j, n1_len, n2_len, max_len, sum, carry;
