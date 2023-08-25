@@ -27,7 +27,7 @@ place_value++;
 }
 while (place_value > 0)
 {
-_putchar((num / divisor) + '0');
+_putchar((num / divisor) +'0');
 num %= divisor;
 divisor /= 10;
 place_value--;
