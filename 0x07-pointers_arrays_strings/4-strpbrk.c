@@ -8,15 +8,20 @@
  * Returns a pointer to the first occurrence in the string @s
  * of any of the bytes in the string @accept, or NULL if no such byte is found.
  */
-char *_strchr(char *s, char c)
+char *_strpbrk(char *s, char *accept)
 {
-while (*s != '\0')
+char *ptr = accept;
+while (*s)
 {
-if (*s == c)
+while (*ptr)
+{
+if (*s == *ptr)
 return (s);
+ptr++;
+}
+ptr = accept;
 s++;
 }
-if (c == '\0')
-return (s);
 return (NULL);
 }
+
