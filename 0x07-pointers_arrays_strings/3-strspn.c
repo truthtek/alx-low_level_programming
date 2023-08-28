@@ -9,15 +9,25 @@
  * Returns the number of bytes in the initial segment of @s
  * which consist only of bytes from @accept.
  */
-char *_strchr(char *s, char c)
+unsigned int _strspn(char *s, char *accept)
 {
-while (*s != '\0')
+unsigned int count = 0;
+char *ptr = accept;
+while (*s)
 {
-if (*s == c)
-return (s);
+while (*ptr)
+{
+if (*s == *ptr)
+{
+count++;
+break;
+}
+ptr++;
+}
+if (!*ptr)
+break;
+ptr = accept;
 s++;
 }
-if (c == '\0')
-return (s);
-return (NULL);
+return (count);
 }
