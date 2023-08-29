@@ -5,8 +5,11 @@
  * @s: The string to search.
  * @accept: The bytes to search for.
  *
- * Returns a pointer to the first occurrence in the string @s
- * of any of the bytes in the string @accept, or NULL if no such byte is found.
+ * This function searches the string @s for any of the bytes in the string
+ * @accept. It returns a pointer to the first occurrence of any of the bytes
+ * from the @accept string in the @s string, or NULL if no such byte is found.
+ *
+ * Return: A pointer to the first matching byte in @s, or NULL if not found.
  */
 char *_strpbrk(char *s, char *accept)
 {
@@ -24,4 +27,3 @@ s++;
 }
 return (NULL);
 }
-
