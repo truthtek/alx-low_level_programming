@@ -14,14 +14,5 @@
  */
 void set_string(char **s, char *to)
 {
-/* Free the memory if the pointer is already pointing to a string */
-if (*s != NULL)
-{
-free(*s);
-}
-/* Allocate memory for the new string and copy the content */
-*s = malloc(strlen(to) + 1); // +1 for null-terminator
-if (*s != NULL) {
-strcpy(*s, to);
-}
+*s = to;
 }
