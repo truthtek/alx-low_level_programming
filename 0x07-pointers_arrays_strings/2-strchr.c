@@ -5,8 +5,11 @@
  * @s: The string to search.
  * @c: The character to locate.
  *
- * Returns a pointer to the first occurrence of the character @c
- * in the string @s, or NULL if the character is not found.
+ * This function locates the first occurrence of the character @c
+ * in the string @s. It returns a pointer to the located character,
+ * or NULL if the character is not found.
+ *
+ * Return: A pointer to the located character, or NULL if not found.
  */
 char *_strchr(char *s, char c)
 {
