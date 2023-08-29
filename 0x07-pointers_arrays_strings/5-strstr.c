@@ -6,7 +6,7 @@
  * @needle: The substring to search for.
  *
  * The _strstr() function finds the first occurrence of the substring
- * @needle in the string @haystack. The terminating null bytes (\0) are not compared.
+ * @needle in the string @haystack. The terminating null bytes (\0).
  *
  * Returns a pointer to the beginning of the located substring,
  * or NULL if the substring is not found.
