@@ -6,11 +6,10 @@
  * @s: The string to search.
  * @accept: The characters that are allowed in the prefix substring.
  *
- * This function locates the first occurrence of the character @c
- * in the string @s. It returns a pointer to the located character,
- * or NULL if the character is not found.
+ * This function calculates the length of the initial segment of @s
+ * that consists only of characters present in the string @accept.
  *
- * Returns the number of bytes in the initial segment of @s
+ * Return: The length of the initial segment of @s.
  */
 unsigned int _strspn(char *s, char *accept)
 {
