@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * print_diagsums - Prints the sum of the main and secondary diagonals of a square matrix.
+ * print_diagsums - Prints the sum of the main.
  * @a: Pointer to the start of the square matrix.
  * @size: Size of the square matrix.
  *
