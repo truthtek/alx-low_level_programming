@@ -1,9 +1,9 @@
 /**
- * _sqrt_helper - Helper function that calculates the natural square root of a number
+ * _sqrt_helper - Helper function that calculates the natural square root
  * @n: The number for which square root is to be calculated
  * @i: The current value being tested as the square root of n
  *
- * Return: The natural square root of n, or -1 if n does not have a natural square root
+ * Return: The natural square root of n, or -1 if n does not have a natural
  */
 int _sqrt_helper(int n, int i)
 {
