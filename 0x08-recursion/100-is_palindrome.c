@@ -19,7 +19,12 @@ return (0);
 }
 return (is_palindrome_helper(s, start + 1, end - 1));
 }
-
+/**
+ * _strlen_recursion - Calculates the length of a string using recursion
+ * @s: The string for which length is to be calculated
+ *
+ * Return: The length of s
+ */
 int _strlen_recursion(char *s)
 {
 /* function body */
