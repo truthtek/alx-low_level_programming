@@ -8,7 +8,7 @@
  */
 int is_palindrome_helper(char *s, int start, int end)
 {
-/* function body */
+/* function is_palindrome_helper */
 if (start >= end)
 {
 return (1);
@@ -27,7 +27,7 @@ return (is_palindrome_helper(s, start + 1, end - 1));
  */
 int _strlen_recursion(char *s)
 {
-/* function body */
+/* function _strlen_recursion */
 if (*s == '\0')
 {
 return (0);
