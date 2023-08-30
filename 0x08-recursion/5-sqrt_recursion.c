@@ -1,13 +1,13 @@
-#include "main.h"
-
 /**
- * _sqrt_recursion - Calculates the natural square root of a number using
+ * _sqrt_helper - Helper function that calculates the natural square root of a number
  * @n: The number for which square root is to be calculated
+ * @i: The current value being tested as the square root of n
  *
- * Return: The natural square root of n, or -1 if n does not have a natural
+ * Return: The natural square root of n, or -1 if n does not have a natural square root
  */
 int _sqrt_helper(int n, int i)
 {
+/* function body */
 if (i * i == n)
 {
 return (i);
