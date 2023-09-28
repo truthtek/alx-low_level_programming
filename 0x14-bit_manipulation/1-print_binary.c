@@ -27,3 +27,4 @@ void print_binary(unsigned long int n)
 
 	if (leading_zeros)
 		_putchar('0');
+}
