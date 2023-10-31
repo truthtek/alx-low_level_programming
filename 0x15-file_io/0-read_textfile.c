@@ -1,40 +1,57 @@
-#include "main.h"
-#include <unistd.h>
-/**
-* read_textfile - Reads a text file and prints it to POSIX stdout.
-* @filename: A pointer to the name of the file.
-* @letters: The number of letters the function should read and print.
-*
-* Return: If the function fails or filename is NULL - 0.
-* Otherwise - the actual number of bytes the function can read and print.
-*/
-ssize_t read_textfile(const char *filename, size_t letters)
-{
-int fd;
-ssize_t r, w;
-char *buffer;
-if (filename == NULL)
-return (0);
-fd = open(filename, O_RDONLY);
-if (fd == -1)
-return (0);
-buffer = malloc(sizeof(char) * letters);
-if (buffer == NULL)
-return (0);
-r = read(fd, buffer, letters);
-if (r == -1)
-{
-free(buffer);
-close(fd);
-return (0);
+// Includes required libraries
+#include "main.h" 
+#include <stdlib.h>
+
+// Function declaration
+unsigned int read_and_print_text(char *text_filename, unsigned int max_chars);
+
+// Function definition
+unsigned int read_and_print_text(char *text_filename, unsigned int max_chars) {
+
+  // Declare variables
+  int open_result;
+  int read_result;
+  int write_result;
+  char *text_buffer;
+  
+  // Check for valid filename
+  if (text_filename == NULL) {
+    return 0; 
+  }
+  
+  // Allocate memory for buffer
+  text_buffer = malloc(max_chars * sizeof(char));
+  if (text_buffer == NULL) {
+    return 0;
+  }
+
+  // Open file for reading 
+  open_result = open(text_filename, READ_ONLY);
+  if (open_result == -1) {
+    free(text_buffer);
+    return 0;
+  }
+
+  // Read file contents into buffer
+  read_result = read(open_result, text_buffer, max_chars);
+  if (read_result == -1) {
+    free(text_buffer);
+    close(open_result);
+    return 0;
+  }
+
+  // Print buffer contents to standard output
+  write_result = write(STDOUT, text_buffer, read_result);
+  if (write_result == -1 || write_result != read_result) {
+    free(text_buffer);
+    close(open_result);
+    return 0;
+  }
+
+  // Free buffer, close file
+  free(text_buffer);
+  close(open_result);
+
+  // Return number of bytes printed
+  return write_result;
 }
-w = write(STDOUT_FILENO, buffer, r);
-if (w == -1 || w != r)
-{
-free(buffer);
-close(fd);
-return (0);
-}
-free(buffer);
-close(fd);
-return (w);
