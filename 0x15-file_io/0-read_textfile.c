@@ -1,57 +1,54 @@
-// Includes required libraries
-#include "main.h" 
+// Includes stdlib for malloc/free
+#include "main.h"
 #include <stdlib.h>
 
-// Function declaration
-unsigned int read_and_print_text(char *text_filename, unsigned int max_chars);
+// Function prototype
+size_t read_and_write(const char *file_to_read, size_t max_chars);
 
-// Function definition
-unsigned int read_and_print_text(char *text_filename, unsigned int max_chars) {
-
+// Function definition 
+size_t read_and_write(const char *file_to_read, size_t max_chars)
+{
   // Declare variables
-  int open_result;
-  int read_result;
-  int write_result;
-  char *text_buffer;
-  
-  // Check for valid filename
-  if (text_filename == NULL) {
-    return 0; 
-  }
-  
-  // Allocate memory for buffer
-  text_buffer = malloc(max_chars * sizeof(char));
-  if (text_buffer == NULL) {
+  FILE *fp; 
+  char *buf;
+  size_t chars_read = 0;
+
+  // Validate file pointer
+  if (file_to_read == NULL) {
     return 0;
   }
 
-  // Open file for reading 
-  open_result = open(text_filename, READ_ONLY);
-  if (open_result == -1) {
-    free(text_buffer);
+  // Allocate memory for buffer
+  buf = malloc(max_chars);
+  if (buf == NULL) {
+    return 0;
+  }
+
+  // Open file for reading
+  fp = fopen(file_to_read, "r");
+  if (fp == NULL) {
+    free(buf);
     return 0;
   }
 
   // Read file contents into buffer
-  read_result = read(open_result, text_buffer, max_chars);
-  if (read_result == -1) {
-    free(text_buffer);
-    close(open_result);
+  chars_read = fread(buf, sizeof(char), max_chars, fp);
+  if (chars_read == 0) {
+    fclose(fp);
+    free(buf);
+    return 0; 
+  }
+
+  // Write buffer to standard output
+  if (fwrite(buf, sizeof(char), chars_read, stdout) != chars_read) {
+    fclose(fp);
+    free(buf);
     return 0;
   }
 
-  // Print buffer contents to standard output
-  write_result = write(STDOUT, text_buffer, read_result);
-  if (write_result == -1 || write_result != read_result) {
-    free(text_buffer);
-    close(open_result);
-    return 0;
-  }
+  // Clean up and return chars read
+  fclose(fp);
+  free(buf);
 
-  // Free buffer, close file
-  free(text_buffer);
-  close(open_result);
-
-  // Return number of bytes printed
-  return write_result;
+  return chars_read;
 }
