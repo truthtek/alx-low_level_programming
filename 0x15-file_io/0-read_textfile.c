@@ -1,54 +1,49 @@
-// Includes stdlib for malloc/free
 #include "main.h"
 #include <stdlib.h>
 
-// Function prototype
-size_t read_and_write(const char *file_to_read, size_t max_chars);
+/**
+ * read_textfile - Reads a text file and prints it to POSIX stdout.
+ * @filename: A pointer to the name of the file.
+ * @letters: The number of letters the
+ *           function should read and print.
+ *
+ * Return: If the function fails or filename is NULL - 0.
+ *         O/w - the actual number of bytes the function can read and print.
+ */
 
-// Function definition 
-size_t read_and_write(const char *file_to_read, size_t max_chars)
-{
-  // Declare variables
-  FILE *fp; 
-  char *buf;
-  size_t chars_read = 0;
+ssize_t read_textfile(const char *filename, size_t letters) {
+    ssize_t o, r, w;
+    char *buffer;
 
-  // Validate file pointer
-  if (file_to_read == NULL) {
-    return 0;
-  }
+    if (filename == NULL)
+        return (0);
 
-  // Allocate memory for buffer
-  buf = malloc(max_chars);
-  if (buf == NULL) {
-    return 0;
-  }
+    buffer = malloc(sizeof(char) * letters);
+    if (buffer == NULL)
+        return (0);
 
-  // Open file for reading
-  fp = fopen(file_to_read, "r");
-  if (fp == NULL) {
-    free(buf);
-    return 0;
-  }
+    o = open(filename, O_RDONLY);
+    if (o == -1) {
+        free(buffer);
+        return (0);
+    }
 
-  // Read file contents into buffer
-  chars_read = fread(buf, sizeof(char), max_chars, fp);
-  if (chars_read == 0) {
-    fclose(fp);
-    free(buf);
-    return 0; 
-  }
+    r = read(o, buffer, letters);
+    if (r == -1) {
+        free(buffer);
+        close(o);
+        return (0);
+    }
 
-  // Write buffer to standard output
-  if (fwrite(buf, sizeof(char), chars_read, stdout) != chars_read) {
-    fclose(fp);
-    free(buf);
-    return 0;
-  }
+    w = write(STDOUT_FILENO, buffer, r);
+    if (w == -1 || w != r) {
+        free(buffer);
+        close(o);
+        return (0);
+    }
 
-  // Clean up and return chars read
-  fclose(fp);
-  free(buf);
+    free(buffer);
+    close(o);
 
-  return chars_read;
+    return (w);
 }
