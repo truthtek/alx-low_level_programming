@@ -8,9 +8,9 @@
 /**
 * main - Entry point
 * @argc: Number of command line arguments
-* @argv: Array of command line argument strings
+* @argv: Array of command line argument
 *
-* Return: 0 on success, error code on failure
+* Return: 0 on success, error code on 
 */
 int main(int argc, char *argv[])
 {
