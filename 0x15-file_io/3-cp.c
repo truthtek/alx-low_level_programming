@@ -1,57 +1,60 @@
 #include "main.h"
-
-#define BUFF_SIZE 1024
-
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+#define BUF_SIZE 1024
 /**
-* main - Copies a file
-* @argc: Number of arguments
-* @argv: Argument strings
+* main - Entry point
+* @argc: Number of command line arguments
+* @argv: Array of command line argument strings
 *
 * Return: 0 on success, error code on failure
 */
 int main(int argc, char *argv[])
 {
-int from_fd, to_fd, r, w;
-char buffer[BUFF_SIZE];
+int fd_from, fd_to, bytes_read, bytes_written;
+char buffer[BUF_SIZE];
 if (argc != 3)
 {
 dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 exit(97);
 }
-from_fd = open(argv[1], O_RDONLY);
-if (from_fd == -1)
+fd_from = open(argv[1], O_RDONLY);
+if (fd_from == -1)
 {
 dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 exit(98);
 }
-to_fd = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
-if (to_fd == -1)
+fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+if (fd_to == -1)
 {
 dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 exit(99);
 }
-while ((r = read(from_fd, buffer, BUFF_SIZE)) > 0)
+while ((bytes_read = read(fd_from, buffer, BUF_SIZE)) > 0)
 {
-w = write(to_fd, buffer, r);
-if (w != r)
+bytes_written = write(fd_to, buffer, bytes_read);
+if (bytes_written != bytes_read || bytes_written == -1)
 {
 dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 exit(99);
 }
 }
-if (r == -1)
+if (bytes_read == -1)
 {
 dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 exit(98);
 }
-if (close(from_fd) == -1)
+if (close(fd_from) == -1)
 {
-dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", from_fd);
+dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from);
 exit(100);
 }
-if (close(to_fd) == -1)
+if (close(fd_to) == -1)
 {
-dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", to_fd);
+dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to);
 exit(100);
 }
 return (0);
