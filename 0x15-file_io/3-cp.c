@@ -10,7 +10,7 @@
 * @argc: Number of command line arguments
 * @argv: Array of command line argument
 *
-* Return: 0 on success, error code on 
+* Return: 0 on success, error code on
 */
 int main(int argc, char *argv[])
 {
@@ -54,7 +54,9 @@ exit(100);
 }
 if (close(fd_to) == -1)
 {
-dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to);
+dprintf(STDERR_FILENO,
+  "Error: Can't close fd %d\n", 
+   fd_to);
 exit(100);
 }
 return (0);
