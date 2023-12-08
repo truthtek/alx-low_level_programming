@@ -19,5 +19,5 @@ new_node->next = *head;
 if (*head != NULL)
 (*head)->prev = new_node;
 *head = new_node;
-return {new_node);
+return (new_node);
 }
