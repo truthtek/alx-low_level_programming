@@ -7,21 +7,9 @@ EXE = school
 all: $(EXE)
 
 # Compile the source files into object files
-$(EXE): main.o student.o teacher.o
+$(EXE): main.c school.c
 	gcc -o $@ $^
-
-# Compile the main source file
-main.o: main.c
-	gcc -c $<
-
-# Compile the student source file
-student.o: student.c
-	gcc -c $<
-
-# Compile the teacher source file
-teacher.o: teacher.c
-	gcc -c $<
 
 # Clean up the object files and executable
 clean:
-	rm -f $(EXE) *.o
+	rm -f $(EXE)
