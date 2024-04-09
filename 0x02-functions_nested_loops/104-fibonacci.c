@@ -2,27 +2,21 @@
 
 /**
  * main - Prints the first 98 Fibonacci numbers
- *
- * Return: Always 0 (Success)
+ * Return: 0 on success
  */
+int main(void) {
+    unsigned int i;
+    unsigned int first = 1, second = 2, next;
 
-void print_fibonacci(int n)
-{
-    int i, t1 = 0, t2 = 1, nextTerm;
+    printf("%u, %u", first, second);
 
-    for (i = 1; i <= n; ++i)
-    {
-        printf("%d, ", t2);
-        nextTerm = t1 + t2;
-        t1 = t2;
-        t2 = nextTerm;
+    for (i = 2; i < 98; i++) {
+        next = first + second;
+        printf(", %u", next);
+        first = second;
+        second = next;
     }
+
     printf("\n");
+    return 0;
 }
-
-int main(void)
-{
-    print_fibonacci(98);
-    return (0);
-}
-
