@@ -1,26 +1,39 @@
+#include <stdlib.h>
 #include <stdio.h>
-#include <math.h>
+#include "holberton.h"
+
+/**
+* main - finds and prints the largest prime
+* factor of the number 612852475143,
+* followed by a new line.
+* @void:
+* Description - finds and prints the largest prime
+* factor of the number 612852475143,
+* followed by a new line.
+* Return: 0
+*/
 
 int main(void)
 {
-    long int n = 612852475143;
-    long int maxPrime = -1;
-    while (n % 2 == 0)
-    {
-        maxPrime = 2;
-        n >>= 1;
-    }
-    for (int i = 3; i <= sqrt(n); i += 2)
-    {
-        while (n % i == 0)
-        {
-            maxPrime = i;
-            n = n / i;
-        }
-    }
-    if (n > 2)
-        maxPrime = n;
+	long int a;
+	long int b;
+	long int c;
 
-    printf("%ld\n", maxPrime);
-    return (0);
+	b = 612852475143;
+
+	for (a = 1; a <= b; a++)
+	{
+		if (b % a == 0)
+		{
+			if (b == a)
+			{
+				printf("%ld\n", a);
+				break;
+			}
+			c = b / a;
+			b = c;
+			a = 1;
+		}
+	}
+	return (0);
 }
