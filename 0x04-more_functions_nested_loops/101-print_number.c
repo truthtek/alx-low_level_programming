@@ -4,23 +4,26 @@
  * print_number - Prints an integer.
  * @n: The integer to be printed.
  */
-void print_number(int n)
-{
-int divisor = 1;
-int is_negative = 0;
-if (n < 0)
-{
-s_negative = 1;
-n = -n;
-}
-while (n / divisor >= 10)
-divisor *= 10;
-if (is_negative)
-_putchar('-');
-while (divisor != 0)
-{
-_putchar('0' + n / divisor);
-n %= divisor;
-divisor /= 10;
-}
+void print_number(int n) {
+    if (n == 0) {
+        _putchar('0');
+        return;
+    }
+
+    if (n < 0) {
+        _putchar('-');
+        n = -n;
+    }
+
+    int digits[10];
+    int i = 0;
+
+    while (n > 0) {
+        digits[i++] = n % 10;
+        n /= 10;
+    }
+
+    while (i > 0) {
+        _putchar('0' + digits[--i]);
+    }
 }
