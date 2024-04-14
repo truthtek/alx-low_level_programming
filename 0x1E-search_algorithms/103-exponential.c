@@ -1,23 +1,19 @@
-#include <math.h>
 #include "search_algos.h"
 
 /**
- * exponential_search - Searches for a value in a sorted array using the
- *                     Exponential Search algorithm.
+ * exponential_search - Searches for a value in a sorted array of integers
+ *                     using the Exponential search algorithm.
  * @array: Pointer to the first element of the array to search.
  * @size: Number of elements in the array.
  * @value: Value to search for.
  *
- * Return: The first index where the value is located, or -1 if the value is not
- *         present or the array is NULL.
+ * Return: First index where value is located, or -1 if value is not present
+ *         or if array is NULL.
  */
 int exponential_search(int *array, size_t size, int value)
 {
     if (array == NULL || size == 0)
         return -1;
-
-    if (array[0] == value)
-        return 0;
 
     size_t i = 1;
     while (i < size && array[i] <= value)
@@ -26,45 +22,45 @@ int exponential_search(int *array, size_t size, int value)
         i *= 2;
     }
 
-    size_t low = i / 2;
-    size_t high = min(i, size);
+    size_t left = i / 2;
+    size_t right = (i < size) ? i : size - 1;
+    printf("Value found between indexes [%lu] and [%lu]\n", left, right);
 
-    printf("Value found between indexes [%lu] and [%lu]\n", low, high - 1);
-
-    return binary_search(array, low, high - 1, value);
+    return binary_search(array, left, right, value);
 }
 
 /**
- * binary_search - Searches for a value in a sorted array using the
- *                 Binary Search algorithm.
+ * binary_search - Searches for a value in a sorted array of integers
+ *                 using the Binary search algorithm.
  * @array: Pointer to the first element of the array to search.
- * @low: Lowest index of the array (or subarray) to search.
- * @high: Highest index of the array (or subarray) to search.
+ * @left: Index of the leftmost element of the search range.
+ * @right: Index of the rightmost element of the search range.
  * @value: Value to search for.
  *
- * Return: The index where the value is located, or -1 if the value is not found.
+ * Return: Index where value is located, or -1 if value is not present.
  */
-int binary_search(int *array, size_t low, size_t high, int value)
+int binary_search(int *array, size_t left, size_t right, int value)
 {
-    while (low <= high)
+    size_t middle;
+
+    while (left <= right)
     {
-        size_t mid = low + (high - low) / 2;
+        middle = left + (right - left) / 2;
         printf("Searching in array: ");
-        for (size_t i = low; i <= high; i++)
+        for (size_t i = left; i <= right; i++)
         {
             printf("%d", array[i]);
-            if (i != high)
+            if (i != right)
                 printf(", ");
         }
         printf("\n");
 
-        if (array[mid] == value)
-            return mid;
-
-        if (array[mid] < value)
-            low = mid + 1;
+        if (array[middle] == value)
+            return middle;
+        else if (array[middle] < value)
+            left = middle + 1;
         else
-            high = mid - 1;
+            right = middle - 1;
     }
 
     return -1;
