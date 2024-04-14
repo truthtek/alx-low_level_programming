@@ -1,19 +1,20 @@
 #include "search_algos.h"
 
 /**
- * advanced_binary_recursive - Recursively searches for the first occurrence
- *                            of a value in a sorted array.
+ * _advanced_binary - Recursively searches for the first occurrence
+ *                   of a value in a sorted array.
  * @array: Pointer to the first element of the array to search in.
  * @low: Lower index of the search range.
  * @high: Upper index of the search range.
  * @value: Value to search for.
  *
- * Return: Index where value is located, or -1 if value is not present.
+ * Return: Pointer to the first occurrence of the value in the array,
+ *         or NULL if the value is not present.
  */
-int advanced_binary(int *array, size_t size, int value);
+int *_advanced_binary(int *array, size_t low, size_t high, int value)
 {
     if (low > high)
-        return -1;
+        return NULL;
 
     size_t mid = low + (high - low) / 2;
 
@@ -29,14 +30,14 @@ int advanced_binary(int *array, size_t size, int value);
     if (array[mid] == value)
     {
         if (mid == low || array[mid - 1] != value)
-            return mid;
+            return &array[mid];
         else
-            return advanced_binary_recursive(array, low, mid - 1, value);
+            return _advanced_binary(array, low, mid - 1, value);
     }
     else if (array[mid] > value)
-        return advanced_binary_recursive(array, low, mid - 1, value);
+        return _advanced_binary(array, low, mid - 1, value);
     else
-        return advanced_binary_recursive(array, mid + 1, high, value);
+        return _advanced_binary(array, mid + 1, high, value);
 }
 
 /**
@@ -46,13 +47,11 @@ int advanced_binary(int *array, size_t size, int value);
  * @size: Number of elements in the array.
  * @value: Value to search for.
  *
- * Return: Index where value is located, or -1 if value is not present
- *         or if array is NULL.
+ * Return: Index where the first occurrence of the value is located,
+ *         or -1 if the value is not present or if the array is NULL.
  */
 int advanced_binary(int *array, size_t size, int value)
 {
-    if (array == NULL || size == 0)
-        return -1;
-
-    return advanced_binary_recursive(array, 0, size - 1, value);
+    int *result = _advanced_binary(array, 0, size - 1, value);
+    return (result) ? (result - array) : -1;
 }
