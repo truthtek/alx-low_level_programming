@@ -10,7 +10,7 @@
  *
  * Return: Index where value is located, or -1 if value is not present.
  */
-int advanced_binary_recursive(int *array, size_t low, size_t high, int value)
+int advanced_binary(int *array, size_t size, int value);
 {
     if (low > high)
         return -1;
